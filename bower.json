@@ -1,0 +1,27 @@
+{
+  "name": "validator-rules",
+  "moduleType": "globals",
+  "homepage": "https://github.com/Gotham-Framework/validator",
+  "authors": [
+    "Ges Jeremie <bonjour@gesjeremie.fr>"
+  ],
+  "description": "Validation rules for the Validator class",
+  "main": "dist/validator-rules.js",
+  "keywords": [
+    "gotham-validator-rules"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "qunit": "~1.17.1"
+  },
+  "dependencies": {
+    "gotham-validator": "1.0.0"
+  }
+}
