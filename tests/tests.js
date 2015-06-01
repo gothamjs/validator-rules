@@ -1,3 +1,96 @@
+
+module('Accepted rule');
+
+test('Must pass with "yes"', 1, function() {
+
+  datas = {
+    "terms": "yes"
+  };
+
+  rules = {
+    "terms": "accepted"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+test('Must pass with "yes"', 1, function() {
+
+  datas = {
+    "terms": "yes"
+  };
+
+  rules = {
+    "terms": "accepted"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+test('Must pass with "on"', 1, function() {
+
+  datas = {
+    "terms": "on"
+  };
+
+  rules = {
+    "terms": "accepted"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+test('Must pass with "1" string', 1, function() {
+
+  datas = {
+    "terms": "1"
+  };
+
+  rules = {
+    "terms": "accepted"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+test('Must fails with "1" integer', 1, function() {
+
+  datas = {
+    "terms": 1
+  };
+
+  rules = {
+    "terms": "accepted"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+
+});
+
 module('Alpha rule');
 
 
@@ -134,20 +227,39 @@ test('Must pass with "newYork4"', 1, function() {
 
 });
 
+module('Array rule');
 
-module('Accepted rule');
-
-test('Must pass with "yes"', 1, function() {
+test('Must fail with string', 1, function() {
 
   datas = {
-    "terms": "yes"
+    "name": "string"
   };
 
   rules = {
-    "terms": "accepted"
+    "name": "array"
   };
 
   validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+
+});
+
+test('Must pass with array', 1, function() {
+
+  datas = {
+    "name": ["batman", "joker"]
+  };
+
+  rules = {
+    "name": "array"
+  };
+
+  validation = new Validator();
+
   validation.make(datas, rules);
 
   deepEqual(validation.passes(), true);
@@ -155,71 +267,39 @@ test('Must pass with "yes"', 1, function() {
 
 });
 
-test('Must pass with "yes"', 1, function() {
+
+test('Must fail with integer', 1, function() {
 
   datas = {
-    "terms": "yes"
+    "name": 5
   };
 
   rules = {
-    "terms": "accepted"
+    "name": "array"
   };
 
   validation = new Validator();
+
   validation.make(datas, rules);
 
-  deepEqual(validation.passes(), true);
+  deepEqual(validation.passes(), false);
 
 
 });
 
-test('Must pass with "on"', 1, function() {
+
+test('Must fail with object', 1, function() {
 
   datas = {
-    "terms": "on"
+    "name": {name: "joker"}
   };
 
   rules = {
-    "terms": "accepted"
+    "name": "array"
   };
 
   validation = new Validator();
-  validation.make(datas, rules);
 
-  deepEqual(validation.passes(), true);
-
-
-});
-
-test('Must pass with "1" string', 1, function() {
-
-  datas = {
-    "terms": "1"
-  };
-
-  rules = {
-    "terms": "accepted"
-  };
-
-  validation = new Validator();
-  validation.make(datas, rules);
-
-  deepEqual(validation.passes(), true);
-
-
-});
-
-test('Must fails with "1" integer', 1, function() {
-
-  datas = {
-    "terms": 1
-  };
-
-  rules = {
-    "terms": "accepted"
-  };
-
-  validation = new Validator();
   validation.make(datas, rules);
 
   deepEqual(validation.passes(), false);

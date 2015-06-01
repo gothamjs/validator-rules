@@ -1,4 +1,17 @@
 ##
+# Accepted
+#
+# The field under validation must be yes, on, or 1. This is useful for validating "Terms of Service" acceptance.
+##
+Validator.rule 'accepted', (attribute, value, params) ->
+
+  if value is 'yes' or value is 'on' or value is '1'
+
+    return true
+
+  return false
+
+##
 # Alpha
 #
 # The field under validation must be entirely alphabetic characters.
@@ -43,19 +56,19 @@ Validator.rule 'alpha_num', (attribute, value, params) ->
 
   return false
 
-##
-# Accepted
-#
-# The field under validation must be yes, on, or 1. This is useful for validating "Terms of Service" acceptance.
-##
-Validator.rule 'accepted', (attribute, value, params) ->
 
-  if value is 'yes' or value is 'on' or value is '1'
+##
+# Array
+#
+# The field under validation must be of type array.
+##
+Validator.rule 'array', (attribute, value, params) ->
+
+  if _.isArray(value)
 
     return true
 
   return false
-
 
 ##
 # Required
@@ -95,10 +108,11 @@ Validator.rule 'email', (attribute, value, params) ->
 #
 ##
 Validator.errors
+  accepted: 'The :attribute must be accepted.'
   alpha: 'The :attribute may only contain letters.'
   alpha_dash: 'The :attribute may only contain letters, numbers, and dashes.'
   alpha_num: 'The :attribute may only contain letters and numbers.'
-  accepted: 'The :attribute must be accepted.'
+  array: 'The :attribute must be an array.'
   required: 'The :attribute is required'
   email: 'The :attribute must be a valid email'
 
