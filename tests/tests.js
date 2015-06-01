@@ -93,6 +93,47 @@ test('Must fail with " batman_and-joker " (with spaces)', 1, function() {
 
 });
 
+module('AlphaNum rule');
+
+test('Must fail with "837kdkd-_"', 1, function() {
+
+  datas = {
+    "name": "837kdkd-_"
+  };
+
+  rules = {
+    "name": "alpha_num"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+
+});
+
+
+test('Must pass with "newYork4"', 1, function() {
+
+  datas = {
+    "name": "newYork4"
+  };
+
+  rules = {
+    "name": "alpha_num"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
 
 module('Accepted rule');
 
@@ -185,6 +226,7 @@ test('Must fails with "1" integer', 1, function() {
 
 
 });
+
 
 /*
 module('Required rule');

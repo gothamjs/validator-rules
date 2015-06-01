@@ -29,6 +29,21 @@ Validator.rule 'alpha_dash', (attribute, value, params) ->
   return false
 
 ##
+# Alpha Num
+#
+# The field under validation must be entirely alpha-numeric characters.
+##
+Validator.rule 'alpha_num', (attribute, value, params) ->
+
+  if value is undefined or value is ''
+    return true
+  
+  if value.match(/^[a-zA-Z0-9]+$/)
+    return true
+
+  return false
+
+##
 # Accepted
 #
 # The field under validation must be yes, on, or 1. This is useful for validating "Terms of Service" acceptance.
@@ -82,6 +97,7 @@ Validator.rule 'email', (attribute, value, params) ->
 Validator.errors
   alpha: 'The :attribute may only contain letters.'
   alpha_dash: 'The :attribute may only contain letters, numbers, and dashes.'
+  alpha_num: 'The :attribute may only contain letters and numbers.'
   accepted: 'The :attribute must be accepted.'
   required: 'The :attribute is required'
   email: 'The :attribute must be a valid email'

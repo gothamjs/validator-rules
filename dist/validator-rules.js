@@ -20,6 +20,16 @@
     return false;
   });
 
+  Validator.rule('alpha_num', function(attribute, value, params) {
+    if (value === void 0 || value === '') {
+      return true;
+    }
+    if (value.match(/^[a-zA-Z0-9]+$/)) {
+      return true;
+    }
+    return false;
+  });
+
   Validator.rule('accepted', function(attribute, value, params) {
     if (value === 'yes' || value === 'on' || value === '1') {
       return true;
@@ -51,6 +61,7 @@
   Validator.errors({
     alpha: 'The :attribute may only contain letters.',
     alpha_dash: 'The :attribute may only contain letters, numbers, and dashes.',
+    alpha_num: 'The :attribute may only contain letters and numbers.',
     accepted: 'The :attribute must be accepted.',
     required: 'The :attribute is required',
     email: 'The :attribute must be a valid email'
