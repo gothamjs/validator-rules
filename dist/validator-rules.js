@@ -51,6 +51,15 @@
     return false;
   });
 
+  Validator.rule('email', function(attribute, value, params) {
+    var regexEmail;
+    if (value === void 0 || value === null) {
+      return false;
+    }
+    regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regexEmail.test(value);
+  });
+
   Validator.rule('required', function(attribute, value, params) {
     var str;
     if (value === void 0 || value === null) {
@@ -63,15 +72,6 @@
     return true;
   });
 
-  Validator.rule('email', function(attribute, value, params) {
-    var regexEmail;
-    if (value === void 0 || value === null) {
-      return false;
-    }
-    regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regexEmail.test(value);
-  });
-
   Validator.errors({
     accepted: 'The :attribute must be accepted.',
     alpha: 'The :attribute may only contain letters.',
@@ -79,8 +79,8 @@
     alpha_num: 'The :attribute may only contain letters and numbers.',
     array: 'The :attribute must be an array.',
     boolean: 'The :attribute field must be true or false.',
-    required: 'The :attribute is required',
-    email: 'The :attribute must be a valid email'
+    email: 'The :attribute must be a valid email address.',
+    required: 'The :attribute is required.'
   });
 
 }).call(this);

@@ -83,6 +83,20 @@ Validator.rule 'boolean', (attribute, value, params) ->
   return false
 
 ##
+# Email
+#
+# Check if a string is a valid email
+##
+Validator.rule 'email', (attribute, value, params) ->
+
+  if value is undefined or value is null
+    return false
+
+  regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  return regexEmail.test value
+
+##
 # Required
 #
 # Check if you have a value
@@ -99,21 +113,6 @@ Validator.rule 'required', (attribute, value, params) ->
 
   return true
 
-##
-# Email
-#
-# Check if a string is a valid email
-##
-Validator.rule 'email', (attribute, value, params) ->
-
-  if value is undefined or value is null
-    return false
-
-  regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-  return regexEmail.test value
-
-
 
 ##
 # Errors
@@ -126,6 +125,6 @@ Validator.errors
   alpha_num: 'The :attribute may only contain letters and numbers.'
   array: 'The :attribute must be an array.'
   boolean: 'The :attribute field must be true or false.'
-  required: 'The :attribute is required'
-  email: 'The :attribute must be a valid email'
+  email: 'The :attribute must be a valid email address.'
+  required: 'The :attribute is required.'
 

@@ -365,48 +365,6 @@ test('Must fail with a true string', 1, function() {
 
 });
 
-
-
-/*
-module('Required rule');
-
-test('Must fail if string ""', 1, function() {
-
-  datas = {
-    "name": ""
-  };
-
-  rules = {
-    "name": "required"
-  };
-
-  validation = new Validator();
-
-  validation.make(datas, rules);
-
-  deepEqual(validation.passes(), false);
-
-}); 
-
-test('Must display the error', 1, function() {
-
-  datas = {
-    "name": ""
-  };
-
-  rules = {
-    "name": "required"
-  };
-
-  validation = new Validator();
-
-  validation.make(datas, rules);
-
-  deepEqual(validation.errors.first('name'), 'The name is required');
-
-
-});
-
 module('Email rule');
 
 test('Must fail with "batman"', 1, function() {
@@ -460,98 +418,25 @@ test('Must fail with "batman@github"', 1, function() {
 
 });
 
-module('Accepted rule');
+module('Required rule');
 
-test('Must pass with "yes"', 1, function() {
+test('Must fail if string ""', 1, function() {
 
   datas = {
-    "terms": "yes"
+    "name": ""
   };
 
   rules = {
-    "terms": "accepted"
+    "name": "required"
   };
 
   validation = new Validator();
-  validation.make(datas, rules);
 
-  deepEqual(validation.passes(), true);
-
-
-});
-
-test('Must pass with "yes"', 1, function() {
-
-  datas = {
-    "terms": "yes"
-  };
-
-  rules = {
-    "terms": "accepted"
-  };
-
-  validation = new Validator();
-  validation.make(datas, rules);
-
-  deepEqual(validation.passes(), true);
-
-
-});
-
-test('Must pass with "on"', 1, function() {
-
-  datas = {
-    "terms": "on"
-  };
-
-  rules = {
-    "terms": "accepted"
-  };
-
-  validation = new Validator();
-  validation.make(datas, rules);
-
-  deepEqual(validation.passes(), true);
-
-
-});
-
-test('Must pass with "1" string', 1, function() {
-
-  datas = {
-    "terms": "1"
-  };
-
-  rules = {
-    "terms": "accepted"
-  };
-
-  validation = new Validator();
-  validation.make(datas, rules);
-
-  deepEqual(validation.passes(), true);
-
-
-});
-
-test('Must fails with "1" integer', 1, function() {
-
-  datas = {
-    "terms": 1
-  };
-
-  rules = {
-    "terms": "accepted"
-  };
-
-  validation = new Validator();
   validation.make(datas, rules);
 
   deepEqual(validation.passes(), false);
 
-
-});
-*/
+}); 
 
 
 
