@@ -44,6 +44,13 @@
     return false;
   });
 
+  Validator.rule('boolean', function(attribute, value, params) {
+    if (_.isBoolean(value)) {
+      return true;
+    }
+    return false;
+  });
+
   Validator.rule('required', function(attribute, value, params) {
     var str;
     if (value === void 0 || value === null) {
@@ -71,6 +78,7 @@
     alpha_dash: 'The :attribute may only contain letters, numbers, and dashes.',
     alpha_num: 'The :attribute may only contain letters and numbers.',
     array: 'The :attribute must be an array.',
+    boolean: 'The :attribute field must be true or false.',
     required: 'The :attribute is required',
     email: 'The :attribute must be a valid email'
   });

@@ -71,6 +71,18 @@ Validator.rule 'array', (attribute, value, params) ->
   return false
 
 ##
+# Boolean
+#
+# The field under validation must be of type boolean.
+##
+Validator.rule 'boolean', (attribute, value, params) ->
+
+  if _.isBoolean(value)
+    return true
+
+  return false
+
+##
 # Required
 #
 # Check if you have a value
@@ -113,6 +125,7 @@ Validator.errors
   alpha_dash: 'The :attribute may only contain letters, numbers, and dashes.'
   alpha_num: 'The :attribute may only contain letters and numbers.'
   array: 'The :attribute must be an array.'
+  boolean: 'The :attribute field must be true or false.'
   required: 'The :attribute is required'
   email: 'The :attribute must be a valid email'
 

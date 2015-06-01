@@ -304,8 +304,67 @@ test('Must fail with object', 1, function() {
 
   deepEqual(validation.passes(), false);
 
+});
+
+module('Boolean rule');
+
+test('Must pass with a true boolean', 1, function() {
+
+  datas = {
+    "want": true
+  };
+
+  rules = {
+    "want": "boolean"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
 
 });
+
+test('Must pass with a false boolean', 1, function() {
+
+  datas = {
+    "want": false
+  };
+
+  rules = {
+    "want": "boolean"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+test('Must fail with a true string', 1, function() {
+
+  datas = {
+    "want": "true"
+  };
+
+  rules = {
+    "want": "boolean"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+
+});
+
 
 
 /*
