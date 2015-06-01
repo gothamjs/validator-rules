@@ -1,5 +1,22 @@
 # In progress 
 
+# Validator rules
+
+Validation rules for the validator class.
+
+## Rules
+| Rule            | Description                                                                                                    |
+|-----------------|----------------------------------------------------------------------------------------------------------------|
+| accepted        | The field under validation must be yes, on, or 1. This is useful for validating "Terms of Service" acceptance. |
+| alpha           | The field under validation must be entirely alphabetic characters.                                             |
+| alpha_dash      | The field under validation may have alpha-numeric characters, as well as dashes and underscores.               |
+| alpha_num       | The field under validation must be entirely alpha-numeric characters.                                          |
+| array           | The field under validation must be of type array.                                                              |
+| boolean         | The field under validation must be a strict boolean.                                                           |
+| email           | The field under validation must be an email                                                                    |
+| required        | The field under validation is required                                                                         |
+
+
 ## How to compile source files 
 
 In the root of the project, execute that : 
