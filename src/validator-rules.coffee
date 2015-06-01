@@ -1,4 +1,48 @@
 ##
+# Alpha
+#
+# The field under validation must be entirely alphabetic characters.
+##
+Validator.rule 'alpha', (attribute, value, params) ->
+
+  if value is undefined or value is ''
+    return true
+  
+  if value.match(/^[a-zA-Z]+$/)
+    return true
+
+  return false
+
+##
+# Alpha Dash
+#
+# The field under validation may have alpha-numeric characters, as well as dashes and underscores.
+##
+Validator.rule 'alpha_dash', (attribute, value, params) ->
+
+  if value is undefined or value is ''
+    return true
+  
+  if value.match(/^[a-zA-Z0-9_-]+$/)
+    return true
+
+  return false
+
+##
+# Accepted
+#
+# The field under validation must be yes, on, or 1. This is useful for validating "Terms of Service" acceptance.
+##
+Validator.rule 'accepted', (attribute, value, params) ->
+
+  if value is 'yes' or value is 'on' or value is '1'
+
+    return true
+
+  return false
+
+
+##
 # Required
 #
 # Check if you have a value
@@ -16,12 +60,6 @@ Validator.rule 'required', (attribute, value, params) ->
   return true
 
 ##
-# Required error
-##
-Validator.error 'required', 'The :attribute is required' 
-
-
-##
 # Email
 #
 # Check if a string is a valid email
@@ -35,17 +73,16 @@ Validator.rule 'email', (attribute, value, params) ->
 
   return regexEmail.test value
 
+
+
 ##
-# Email error
+# Errors
+#
 ##
-Validator.error 'email', 'The :attribute must be a valid email'
-
-
-Validator.rule 'accepted', (attribute, value, params) ->
-
-  if value is 'yes' or value is 'on' or value is '1'
-
-    return true
-
-  return false
+Validator.errors
+  alpha: 'The :attribute may only contain letters.'
+  alpha_dash: 'The :attribute may only contain letters, numbers, and dashes.'
+  accepted: 'The :attribute must be accepted.'
+  required: 'The :attribute is required'
+  email: 'The :attribute must be a valid email'
 
