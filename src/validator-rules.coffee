@@ -97,6 +97,18 @@ Validator.rule 'email', (attribute, value, params) ->
   return regexEmail.test value
 
 ##
+# Number
+#
+# The field under validation must be of type number
+##
+Validator.rule 'number', (attribute, value, params) ->
+
+  unless _.isNumber(value)
+    return false
+
+  return true 
+
+##
 # Required
 #
 # Check if you have a value

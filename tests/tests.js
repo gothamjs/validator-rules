@@ -418,6 +418,67 @@ test('Must fail with "batman@github"', 1, function() {
 
 });
 
+module('Number rule');
+
+test("Must pass with 5", 1, function() {
+
+  datas = {
+    "lvl": 5
+  };
+
+  rules = {
+    "lvl": "number"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+
+test("Must fail with `5` string", 1, function() {
+
+  datas = {
+    "lvl": "5"
+  };
+
+  rules = {
+    "lvl": "number"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+
+});
+
+test("Must pass with float", 1, function() {
+
+  datas = {
+    "lvl": 5.05
+  };
+
+  rules = {
+    "lvl": "number"
+  };
+
+  validation = new Validator();
+
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+
+});
+
+
 module('Required rule');
 
 test('Must fail if string ""', 1, function() {

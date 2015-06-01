@@ -60,6 +60,13 @@
     return regexEmail.test(value);
   });
 
+  Validator.rule('number', function(attribute, value, params) {
+    if (!_.isNumber(value)) {
+      return false;
+    }
+    return true;
+  });
+
   Validator.rule('required', function(attribute, value, params) {
     var str;
     if (value === void 0 || value === null) {
