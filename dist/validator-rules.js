@@ -87,6 +87,7 @@
     array: 'The :attribute must be an array.',
     boolean: 'The :attribute field must be true or false.',
     email: 'The :attribute must be a valid email address.',
+    number: 'The :attribute must be a number.',
     required: 'The :attribute is required.'
   });
 

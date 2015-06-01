@@ -111,7 +111,7 @@ Validator.rule 'number', (attribute, value, params) ->
 ##
 # Required
 #
-# Check if you have a value
+# The field under validation is required
 ##
 Validator.rule 'required', (attribute, value, params) ->
 
@@ -138,5 +138,6 @@ Validator.errors
   array: 'The :attribute must be an array.'
   boolean: 'The :attribute field must be true or false.'
   email: 'The :attribute must be a valid email address.'
+  number: 'The :attribute must be a number.'
   required: 'The :attribute is required.'
 
