@@ -54,10 +54,21 @@
   Validator.rule('email', function(attribute, value, params) {
     var regexEmail;
     if (value === void 0 || value === null) {
-      return false;
+      return true;
     }
     regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regexEmail.test(value);
+  });
+
+  Validator.rule('length', function(attribute, value, params) {
+    if (value === void 0 || value === null) {
+      return true;
+    }
+    value = String(value);
+    if (value.length !== parseInt(params[0])) {
+      return false;
+    }
+    return true;
   });
 
   Validator.rule('number', function(attribute, value, params) {
@@ -87,6 +98,7 @@
     array: 'The :attribute must be an array.',
     boolean: 'The :attribute field must be true or false.',
     email: 'The :attribute must be a valid email address.',
+    length: 'The attribute must be :value1 characters.',
     number: 'The :attribute must be a number.',
     required: 'The :attribute is required.'
   });

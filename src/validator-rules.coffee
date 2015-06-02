@@ -90,11 +90,28 @@ Validator.rule 'boolean', (attribute, value, params) ->
 Validator.rule 'email', (attribute, value, params) ->
 
   if value is undefined or value is null
-    return false
+    return true
 
   regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   return regexEmail.test value
+
+##
+# Length
+#
+# The field under validation must be the exact length given
+##
+Validator.rule 'length', (attribute, value, params) ->
+  
+  if value is undefined or value is null
+    return true
+
+  value = String(value)
+
+  unless value.length is parseInt(params[0])
+    return false
+
+  return true 
 
 ##
 # Number
@@ -138,6 +155,7 @@ Validator.errors
   array: 'The :attribute must be an array.'
   boolean: 'The :attribute field must be true or false.'
   email: 'The :attribute must be a valid email address.'
+  length: 'The attribute must be :value1 characters.'
   number: 'The :attribute must be a number.'
   required: 'The :attribute is required.'
 

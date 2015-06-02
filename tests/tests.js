@@ -418,6 +418,60 @@ test('Must fail with "batman@github"', 1, function() {
 
 });
 
+module('Length rule');
+
+test('Must pass', 1, function() {
+
+  datas = {
+    "name": "batman"
+  };
+
+  rules = {
+    "name": "length:6"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+});
+
+test('Must fail', 1, function() {
+
+  datas = {
+    "name": "batman"
+  };
+
+  rules = {
+    "name": "length:7"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+});
+
+
+test('Must fail with `55` number', 1, function() {
+
+  datas = {
+    "name": 55
+  };
+
+  rules = {
+    "name": "length:1"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+});
+
 module('Number rule');
 
 test("Must pass with 5", 1, function() {
