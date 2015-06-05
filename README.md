@@ -3,8 +3,8 @@
 Validation rules for the validator class.
 
 # How to install
-```shell
-bower install --save gotham-valitor-rules
+```
+$ bower install --save gotham-valitor-rules
 ```
 
 # Example
