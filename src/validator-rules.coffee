@@ -96,6 +96,11 @@ Validator.rule 'email', (attribute, value, params) ->
 
   return regexEmail.test value
 
+##
+# In
+#
+# The field under validation must be in the values given
+##
 Validator.rule 'in', (attribute, value, params) ->
 
   if value is undefined or value is null
