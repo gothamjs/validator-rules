@@ -20,7 +20,7 @@ Validator.rule 'alpha', (attribute, value, params) ->
 
   if value is undefined or value is ''
     return true
-  
+
   if value.match(/^[a-zA-Z]+$/)
     return true
 
@@ -35,7 +35,7 @@ Validator.rule 'alpha_dash', (attribute, value, params) ->
 
   if value is undefined or value is ''
     return true
-  
+
   if value.match(/^[a-zA-Z0-9_-]+$/)
     return true
 
@@ -50,7 +50,7 @@ Validator.rule 'alpha_num', (attribute, value, params) ->
 
   if value is undefined or value is ''
     return true
-  
+
   if value.match(/^[a-zA-Z0-9]+$/)
     return true
 
@@ -96,13 +96,23 @@ Validator.rule 'email', (attribute, value, params) ->
 
   return regexEmail.test value
 
+Validator.rule 'in', (attribute, value, params) ->
+
+  if value is undefined or value is null
+    return true
+
+  if _.includes(params, value)
+    return true
+
+  return false
+
 ##
 # Length
 #
 # The field under validation must be the exact length given
 ##
 Validator.rule 'length', (attribute, value, params) ->
-  
+
   if value is undefined or value is null
     return true
 
@@ -111,7 +121,7 @@ Validator.rule 'length', (attribute, value, params) ->
   unless value.length is parseInt(params[0])
     return false
 
-  return true 
+  return true
 
 ##
 # Number
@@ -123,7 +133,7 @@ Validator.rule 'number', (attribute, value, params) ->
   unless _.isNumber(value)
     return false
 
-  return true 
+  return true
 
 ##
 # Required
@@ -155,7 +165,7 @@ Validator.errors
   array: 'The :attribute must be an array.'
   boolean: 'The :attribute field must be true or false.'
   email: 'The :attribute must be a valid email address.'
+  in: 'The :attribute is invalid.'
   length: 'The attribute must be :value1 characters.'
   number: 'The :attribute must be a number.'
   required: 'The :attribute is required.'
-

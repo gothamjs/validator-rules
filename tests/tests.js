@@ -110,7 +110,7 @@ test('Must pass with "goTHam', 1, function() {
 
   deepEqual(validation.passes(), true);
 
-}); 
+});
 
 test('Must fail with "1gotHAM"', 1, function() {
 
@@ -418,6 +418,44 @@ test('Must fail with "batman@github"', 1, function() {
 
 });
 
+
+module('In rule');
+
+test('Must pass', 1, function() {
+
+  datas = {
+    "name": "batman@github.io"
+  };
+
+  rules = {
+    "name": "in:batman@github.io,joker@github.io"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+});
+
+test('Must fail', 1, function() {
+
+  datas = {
+    "name": "robin@github.io"
+  };
+
+  rules = {
+    "name": "in:batman@github.io,joker@github.io"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+});
+
+
 module('Length rule');
 
 test('Must pass', 1, function() {
@@ -551,10 +589,4 @@ test('Must fail if string ""', 1, function() {
 
   deepEqual(validation.passes(), false);
 
-}); 
-
-
-
-
-
-
+});
