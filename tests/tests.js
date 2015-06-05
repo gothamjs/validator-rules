@@ -1,4 +1,6 @@
-
+/*
+  Accepted Rule
+*/
 module('Accepted rule');
 
 test('Must pass with "yes"', 1, function() {
@@ -91,6 +93,10 @@ test('Must fails with "1" integer', 1, function() {
 
 });
 
+
+/*
+  Alpha Rule
+*/
 module('Alpha rule');
 
 
@@ -148,7 +154,11 @@ test('Must fail with " gotHAM " (with spaces)', 1, function() {
 
 });
 
-module('AlphaDash rule');
+
+/*
+  Alpha Dash Rule
+*/
+module('Alpha Dash rule');
 
 test('Must pass with "batman_and-joker"', 1, function() {
 
@@ -186,6 +196,10 @@ test('Must fail with " batman_and-joker " (with spaces)', 1, function() {
 
 });
 
+
+/*
+  Alpha Num Rule
+*/
 module('AlphaNum rule');
 
 test('Must fail with "837kdkd-_"', 1, function() {
@@ -227,6 +241,10 @@ test('Must pass with "newYork4"', 1, function() {
 
 });
 
+
+/*
+  Array Rule
+*/
 module('Array rule');
 
 test('Must fail with string', 1, function() {
@@ -306,6 +324,10 @@ test('Must fail with object', 1, function() {
 
 });
 
+
+/*
+  Boolean Rule
+*/
 module('Boolean rule');
 
 test('Must pass with a true boolean', 1, function() {
@@ -365,6 +387,10 @@ test('Must fail with a true string', 1, function() {
 
 });
 
+
+/*
+  Email Rule
+*/
 module('Email rule');
 
 test('Must fail with "batman"', 1, function() {
@@ -419,6 +445,9 @@ test('Must fail with "batman@github"', 1, function() {
 });
 
 
+/*
+  In Rule
+*/
 module('In rule');
 
 test('Must pass', 1, function() {
@@ -456,6 +485,9 @@ test('Must fail', 1, function() {
 });
 
 
+/*
+  Length Rule
+*/
 module('Length rule');
 
 test('Must pass', 1, function() {
@@ -510,6 +542,50 @@ test('Must fail with `55` number', 1, function() {
 
 });
 
+
+/*
+  Not In Rule
+*/
+module('Not In rule');
+
+test('Must pass', 1, function() {
+
+  datas = {
+    "name": "robin@github.io"
+  };
+
+  rules = {
+    "name": "not_in:batman@github.io,joker@github.io"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), true);
+
+});
+
+test('Must fail', 1, function() {
+
+  datas = {
+    "name": "batman@github.io"
+  };
+
+  rules = {
+    "name": "not_in:batman@github.io,joker@github.io"
+  };
+
+  validation = new Validator();
+  validation.make(datas, rules);
+
+  deepEqual(validation.passes(), false);
+
+});
+
+
+/*
+  Number Rule
+*/
 module('Number rule');
 
 test("Must pass with 5", 1, function() {
@@ -571,6 +647,9 @@ test("Must pass with float", 1, function() {
 });
 
 
+/*
+  Required Rule
+*/
 module('Required rule');
 
 test('Must fail if string ""', 1, function() {

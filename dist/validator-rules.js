@@ -64,6 +64,7 @@
     if (value === void 0 || value === null) {
       return true;
     }
+    value = String(value);
     if (_.includes(params, value)) {
       return true;
     }
@@ -79,6 +80,17 @@
       return false;
     }
     return true;
+  });
+
+  Validator.rule('not_in', function(attribute, value, params) {
+    if (value === void 0 || value === null) {
+      return true;
+    }
+    value = String(value);
+    if (!_.includes(params, value)) {
+      return true;
+    }
+    return false;
   });
 
   Validator.rule('number', function(attribute, value, params) {
@@ -109,6 +121,7 @@
     boolean: 'The :attribute field must be true or false.',
     email: 'The :attribute must be a valid email address.',
     "in": 'The :attribute is invalid.',
+    not_in: 'The :attribute is invalid.',
     length: 'The attribute must be :value1 characters.',
     number: 'The :attribute must be a number.',
     required: 'The :attribute is required.'

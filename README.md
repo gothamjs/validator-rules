@@ -14,8 +14,9 @@ Validation rules for the validator class.
 | array           | The field under validation must be of type array.                                                              |
 | boolean         | The field under validation must be a strict boolean.                                                           |
 | email           | The field under validation must be an email                                                                    |
-| in:value1, value2 | The field under validation must be in the values given                                                       |
+| in:value1,value2 | The field under validation must be in the values given                                                       |
 | length:size     | The field under validation must be the exact length size given                                                 |
+| not_in:value1,value2 | The field under validation must not be in the values given                                                       |
 | number          | The field under validation must be of type number                                                              |
 | required        | The field under validation is required                                                                         |
 

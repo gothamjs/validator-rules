@@ -106,6 +106,8 @@ Validator.rule 'in', (attribute, value, params) ->
   if value is undefined or value is null
     return true
 
+  value = String(value)
+
   if _.includes(params, value)
     return true
 
@@ -127,6 +129,25 @@ Validator.rule 'length', (attribute, value, params) ->
     return false
 
   return true
+
+##
+# Not In
+#
+# The field under validation must not be in the values given
+##
+Validator.rule 'not_in', (attribute, value, params) ->
+
+
+  if value is undefined or value is null
+    return true
+
+  value = String(value)
+
+  unless _.includes(params, value)
+    return true
+
+  return false
+
 
 ##
 # Number
@@ -171,6 +192,7 @@ Validator.errors
   boolean: 'The :attribute field must be true or false.'
   email: 'The :attribute must be a valid email address.'
   in: 'The :attribute is invalid.'
+  not_in: 'The :attribute is invalid.'
   length: 'The attribute must be :value1 characters.'
   number: 'The :attribute must be a number.'
   required: 'The :attribute is required.'
