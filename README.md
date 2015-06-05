@@ -1,8 +1,52 @@
-# In progress
-
 # Validator rules
 
 Validation rules for the validator class.
+
+# How to install
+```
+bower install --save gotham-valitor-rules
+```
+
+# Example
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example Validator rules</title>
+
+    <!-- Dependencies -->
+    <script src="bower_components/gotham-validator/dist/validator.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+
+    <!-- The lib -->
+    <script src="bower_components/gotham-validator-rules/dist/validator-rules.js"></script>
+
+    <!-- Your code -->
+    <script>
+      datas = {
+        "user_email": "batman@gotham"
+      };
+
+      rules = {
+        "user_email": "required|email"
+      };
+
+      validation = new Validator();
+      validation.make(datas, rules);
+
+      // Will display the errors
+      console.log(validation.errors.all());
+    </script>
+
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+    </div>
+</body>
+</html>
+```
 
 ## Rules
 | Rule            | Description                                                                                                    |
