@@ -122,7 +122,7 @@
     email: 'The :attribute must be a valid email address.',
     "in": 'The :attribute is invalid.',
     not_in: 'The :attribute is invalid.',
-    length: 'The attribute must be :value1 characters.',
+    length: 'The :attribute must be :value1 characters.',
     number: 'The :attribute must be a number.',
     required: 'The :attribute is required.'
   });
